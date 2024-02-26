@@ -1,0 +1,23 @@
+library(ggplot2)
+library(stringr)
+library(gridExtra)
+library(nlme)
+library(data.table)
+require(Hmisc)
+library(png)
+library(grid)
+library(tidyverse)
+library(haven)
+library(formattable) # make tables
+library(plyr) # data formatting
+library(dplyr)
+library(MASS)
+library(DT)# creates HTML widget to display R data objects with DataTables
+library(readxl)
+library(ggpubr)
+library(statmod)
+library(lme4)
+library(optimx)
+library(MuMIn)
+library(lubridate)
+library(openxlsx)

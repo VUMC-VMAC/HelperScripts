@@ -62,10 +62,6 @@ Gives the same output as get_descriptives_group.R except that it runs a t-test r
 
 Gives the same usage as get_descriptives_group.R except that it adds a column with mean +/- standard deviation across all the data. Usage: get_descriptives(input, variables, group, type)
 
-### filter_relatedness_using_master.R
-
-Script to identify related pairs between cohorts with genetic data, given files with sample IDs and cohort names. It checks against all_related_pairs.txt and outputs a file (ending in "_relatedexclusion.txt") containing a list of IDs to drop to obtain an unrelated set. Usage: Rscript filter_relatedness_using_master.R -f file1,file2 -c cohort1,cohort2 -o output 
-
 ### Plotting scripts
 
 #### get_spaghetti_plot.R
@@ -76,7 +72,7 @@ Script to generate a fitted spaghetti plot with a variety of optional customizat
 
 Script to generate a fitted spaghetti plot based on the square of the supplied x-axis variable. Usage: get_spaghetti_plot_fitted(input,id_var,xaxis_var,yaxis_var,group_var,plottitle)
 
-#### get spaghetti_plot_fitted_MS.R
+#### get_spaghetti_plot_fitted_MS.R
 
 Script to generate a fitted spaghetti plot. Usage: get_spaghetti_plot_fitted(input,id_var,xaxis_var,yaxis_var,group_var,plottitle)
 
@@ -96,22 +92,30 @@ Script to generate QQ plot only for GWAS results, excluding variants with NA res
 
 Convenience script to generate results tables for individual linear regression results for use in RMarkdowns. The model results will be printed with the variable name and captions supplied and will assume that it is should be on the 4th subheading (ie under a heading like this: #### pretty_var_name) but this can be updated with the optional subheading_n input. Usage: model_results_table(output_summary, pretty_var_name, table_caption, subheading_n=4)
 
-### load_all_libraries.R
+### GWAS-related scripts
 
-Script to load 22 frequently used variables. To use, just source this script.
-
-### read_in_AllRaces_PCs.R
+#### read_in_AllRaces_PCs.R
 
 A wrapper for reading in PCs calculated using smartpca that have been generated with all ancestral groups. Note that this only changes the column labels. Usage: read_in_AllRaces_PCs(AllRaces_PC_file_name)
 
-### read_in_NHW_PCs.R
+#### read_in_NHW_PCs.R
 
 A wrapper for reading in PCs calculated	using smartpca that have been generated	with all ancestral groups. Note	that this only changes the column labels. Usage: read_in_NHW_PCs(NHW_PC_file_name)
 
-### plink2GWAMA_modified.pl
+#### plink2GWAMA_modified.pl
 
 Perl script to transform plink GWAS results files into files ready for meta-analysis in GWAMA. Modified from https://www.geenivaramu.ee/tools/PLINK2GWAMA.pl Usage: plink2GWAMA_modified.pl plink_results plink_frq_file output_file_name
 
-### run_magma.sh
+#### run_magma.sh
 
 Script to run magma gene and pathway tests. Note that default annotations are for build 37. Usage: sh run_magma.sh -b genotype_data_stem -r directory_for_results --gwas_res gwas_results_file -t meta_or_plink -g opt_gene_annotation_file
+
+#### filter_relatedness_using_master.R
+
+Script to identify related pairs between cohorts with genetic data, given files with sample IDs and cohort names. It checks against all_related_pairs.txt and outputs a file (ending in "_relatedexclusion.txt") containing a list of IDs to drop to obtain an unrelated set. Usage: Rscript filter_relatedness_using_master.R -f file1,file2 -c cohort1,cohort2 -o output 
+
+### Other assorted scripts
+
+#### load_all_libraries.R
+
+Script to load 22 frequently used variables. To use, just source this script.

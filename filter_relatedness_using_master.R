@@ -57,7 +57,7 @@ if(opt$preferred_order == T){
 
 
 # read in the master file of related pairs
-relatedpairs <- fread("/data/h_vmac/mahone1/master_relatedness_calc/output/all_related_pairs.txt")
+relatedpairs <- fread("/data/h_vmac/HelperScripts/all_related_pairs.txt")
 
 # get just the pairs that are present in your data
 ## be sure to take into account that there might be ids that look the same between cohorts (thanks, Anna!)

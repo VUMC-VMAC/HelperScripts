@@ -42,6 +42,10 @@ Same as the get_slopes() function by with a few lines to ensure that the desired
 
 Function to perform Blom transformation on however many variables are supplied. Give the function a dataframe, a variable list and a corresponding list of new variable names for the transformed variables. Usage: recodeBlom(df,varlist_orig,varlist_tr)
 
+#### get_residuals.R
+
+Function to extract residuals from linear regression results in R. Supply a dataframe with IDs, the lm output, and a variable name to apply to the residuals. The function will output a two-column dataframe with IDs and the residuals column. Usage: get_residuals(namedataset,lmoutput,residual_ouput_variable_name)
+
 ### Descriptives functions
 
 There are several R functions to obtain basic descriptives information. 

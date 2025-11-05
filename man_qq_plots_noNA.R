@@ -8,13 +8,20 @@ library(data.table)
 options(bitmapType='cairo')
 
 #read in results
-results <- fread(filename, header=TRUE, stringsAsFactors = F)
-names(results)[names(results) == "p-value"] <- "P"
-names(results)[names(results) == "chromosome"] <- "CHR"
-names(results)[names(results) == "position"] <- "BP"
-names(results)[names(results) == "rs_number"] <- "SNP"
+results <- fread(filename)
 
-if(!("CHR" %in% names(results)) || !("BP" %in% names(results))){
+if("chromosome" %in% names(results)){
+   #meta-analysis results
+   names(results)[names(results) == "p-value"] <- "P"
+   names(results)[names(results) == "chromosome"] <- "CHR"
+   names(results)[names(results) == "position"] <- "BP"
+   names(results)[names(results) == "rs_number"] <- "SNP"
+} else if ("#CHROM" %in% names(results)){
+   #plink2 results
+   names(results)[names(results) == "#CHROM"] <- "CHR"
+   names(results)[names(results) == "POS"] <- "BP"
+   names(results)[names(results) == "ID"] <- "SNP"
+} else if(!("CHR" %in% names(results)) || !("BP" %in% names(results))){
   print("Chromosome and position not present in results dataframe. Pulling in now...")
   snps <- fread(snp_info, header = F, stringsAsFactors = F)
   snps <- snps[,c(1,2,4)]
@@ -45,7 +52,7 @@ if(sum(is.na(results$CHR))>0){
 }
 
 #get results for manhattan plot
-man_results <- results[,c("CHR","BP","P")]
+man_results <- results[,c("CHR", "SNP","BP","P")]
 
 #manhattan plot
 png(paste0(filename, ".manhattan.png"), width = 960, height = 480)

@@ -76,7 +76,7 @@ Script to generate a fitted spaghetti plot with a variety of optional customizat
 
 Script to generate a fitted spaghetti plot based on the square of the supplied x-axis variable. Usage: get_spaghetti_plot_fitted(input,id_var,xaxis_var,yaxis_var,group_var,plottitle)
 
-#### get_spaghetti_plot_fitted_MS.R
+#### get_spaghetti_plot_fitted.R
 
 Script to generate a fitted spaghetti plot. Usage: get_spaghetti_plot_fitted(input,id_var,xaxis_var,yaxis_var,group_var,plottitle)
 

@@ -5,6 +5,10 @@ require(nlme)
 require(gridExtra)
 #require(gplots)
 
+## note: for having axis labels, use the label() function 
+## on your x and y axis variables used as input. For example: 
+## label(xaxis_var) <- "your X axis label"
+
 get_spaghetti_plot_fitted <- function(input,id_var,xaxis_var,yaxis_var,group_var,plottitle){
 	data <- input
 	xaxis_column <- which(names(data) == xaxis_var)

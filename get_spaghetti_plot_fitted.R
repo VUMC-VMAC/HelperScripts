@@ -5,6 +5,10 @@ require(nlme)
 require(gridExtra)
 #require(gplots)
 
+## note: for having axis labels, use the label() function 
+## on your x and y axis variables used as input. For example: 
+## label(xaxis_var) <- "your X axis label"
+
 get_spaghetti_plot_fitted <- function(input,id_var,xaxis_var,yaxis_var,group_var,plottitle){
 	data <- input
 	xaxis_column <- which(names(data) == xaxis_var)
@@ -28,8 +32,8 @@ get_spaghetti_plot_fitted <- function(input,id_var,xaxis_var,yaxis_var,group_var
 	attach(data_temp)
 	plot(xaxis,yaxis, type = "n", xlab = label(data[,xaxis_column]), ylab = label(data[,yaxis_column]),main = plottitle,
 	     axes = F, frame = T,xlim = c(round(min(xaxis,na.rm=TRUE)),round(max(xaxis,na.rm=TRUE))),ylim = c(round(min(yaxis,na.rm=TRUE)),round(max(yaxis,na.rm=TRUE))),cex.lab = 2, cex.main= 2)
-	axis(1,seq(round(min(xaxis,na.rm=TRUE)),round(max(xaxis,na.rm=TRUE)),by=round(max(xaxis,na.rm=TRUE) - min(xaxis,na.rm=TRUE))/6),cex.axis = 1.75)
-	axis(2,seq(round(min(yaxis,na.rm=TRUE)),round(max(yaxis,na.rm=TRUE)),by=round(max(yaxis,na.rm=TRUE)-min(yaxis,na.rm=TRUE))/6),cex.axis = 1.75)
+	axis(1,round(seq(round(min(xaxis,na.rm=TRUE)),round(max(xaxis,na.rm=TRUE)),by=round(max(xaxis,na.rm=TRUE) - min(xaxis,na.rm=TRUE))/6), digits = 2),cex.axis = 1.75)
+	axis(2,round(seq(round(min(yaxis,na.rm=TRUE))-1,round(max(yaxis,na.rm=TRUE))+1,by=round(max(yaxis,na.rm=TRUE)-min(yaxis,na.rm=TRUE))/6), digits = 2),cex.axis = 1.75)
 	detach(data_temp)
 	
 	beta1 <- 1:length(levels(data_temp$group))

@@ -10,7 +10,7 @@ options(bitmapType='cairo')
 #read in results
 results <- fread(filename)
 
-if("chromosome" %in% names(results)){
+if("rs_number" %in% names(results)){
    #meta-analysis results
    names(results)[names(results) == "p-value"] <- "P"
    names(results)[names(results) == "chromosome"] <- "CHR"
@@ -21,7 +21,9 @@ if("chromosome" %in% names(results)){
    names(results)[names(results) == "#CHROM"] <- "CHR"
    names(results)[names(results) == "POS"] <- "BP"
    names(results)[names(results) == "ID"] <- "SNP"
-} else if(!("CHR" %in% names(results)) || !("BP" %in% names(results))){
+}
+
+if(!("CHR" %in% names(results)) || !("BP" %in% names(results))){
   print("Chromosome and position not present in results dataframe. Pulling in now...")
   snps <- fread(snp_info, header = F, stringsAsFactors = F)
   snps <- snps[,c(1,2,4)]

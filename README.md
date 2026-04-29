@@ -96,7 +96,7 @@ Script to generate QQ plot only for GWAS results, excluding variants with NA res
 
 Convenience script to generate results tables for individual linear regression results for use in RMarkdowns. The model results will be printed with the variable name and captions supplied and will assume that it is should be on the 4th subheading (ie under a heading like this: #### pretty_var_name) but this can be updated with the optional subheading_n input. Usage: model_results_table(output_summary, pretty_var_name, table_caption, subheading_n=4)
 
-### GWAS-related scripts
+### GWAS-related scripts and files
 
 #### read_in_AllRaces_PCs.R
 
@@ -117,6 +117,10 @@ Script to run magma gene and pathway tests. Note that default annotations are fo
 #### filter_relatedness_using_master.R
 
 Script to identify related pairs between cohorts with genetic data, given files with sample IDs and cohort names. It checks against all_related_pairs.txt and outputs a file (ending in "_relatedexclusion.txt") containing a list of IDs to drop to obtain an unrelated set. Usage: Rscript filter_relatedness_using_master.R -f file1,file2 -c cohort1,cohort2 -o output 
+
+### GWAS_Reference_Variant_list.txt
+
+List containing all CHR/SNP/BP combinations from all .bim files across cohorts/ancestries with genetic data. This file is intended to be used for plotting purposes where SNP, CHR, and/or BP information may be needed.
 
 ### Other assorted scripts
 
